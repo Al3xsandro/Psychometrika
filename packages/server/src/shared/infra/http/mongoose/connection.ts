@@ -4,7 +4,8 @@ import { AppError } from '../../../errors/AppError';
 try {
     mongoose.connect(`${process.env.MONGO_URL}`, {
         useUnifiedTopology: true,
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useCreateIndex: true
     }, () => {
         console.log(`+ database connected`)
     });
