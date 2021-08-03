@@ -18,13 +18,12 @@ const UserSchema = new Schema(
         },
         admin: {
             type: Boolean,
-            trim: true,
             required: true,
             default: false
         },
         class: {
-            type: String,
-            trim: true
+            type: Schema.Types.ObjectId,
+            ref: 'Class'
         },
     },
     {
