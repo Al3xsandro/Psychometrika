@@ -6,22 +6,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 class MongoMock {
-    async connect() {
-        try {
-            await mongoose.connect(`${process.env.MONGO_URL}`, {
-                useUnifiedTopology: true,
-                useNewUrlParser: true,
-                useCreateIndex: true
-            });
-        } catch (err) {
-            throw new Error(`Error on connect database: ${err}`);
-        };
+    connect() {
+        mongoose.connect(`${process.env.MONGO_URL}`, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+            useCreateIndex: true
+        });
     };
 
     close() {
-        mongoose.disconnect((err) => {
-            throw new Error(`Error on connect database: ${err}`);
-        });
+        mongoose.disconnect();
     };
 
     async delete() {

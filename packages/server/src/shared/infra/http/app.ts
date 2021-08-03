@@ -6,8 +6,6 @@ dotenv.config();
 import cors from 'cors';
 import 'express-async-errors';
 
-import '../http/mongoose/connection';
-
 import { route } from './routes/users.routes';
 import { index } from './routes/index.routes';
 

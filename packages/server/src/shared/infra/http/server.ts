@@ -1,5 +1,7 @@
 import { app } from './app';
 
+import '../http/mongoose/connection';
+
 const port = process.env.PORT || 8000
 
 app.listen(port, () => {
