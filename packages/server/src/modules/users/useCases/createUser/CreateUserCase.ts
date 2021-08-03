@@ -8,10 +8,15 @@ import { AppError } from '../../../../shared/errors/AppError';
 class CreateUserCase {
     async execute({
         email,
-        password
+        password,
+        select_class
     }: IUser) {
         if(!email || !password){
             throw new AppError('Invalid e-mail or password', 400);
+        };
+
+        if(!select_class){
+            throw new AppError('invalid select_class');
         };
 
         const userAlreadyExists = await User.findOne({ email });
@@ -22,7 +27,7 @@ class CreateUserCase {
 
         const password_hash = await hash(password, 8);
 
-        const user = await User.create({ email, password: password_hash });
+        const user = await User.create({ email, password: password_hash, class: select_class });
 
         if(!user){
             throw new AppError('An error was occurred', 500);

@@ -15,7 +15,8 @@ describe('AuthenticateUserCase', () => {
     it('should authenticate to receive jwt token', async () => {
         const response = await request(app).post('/v1/login').send({
             email: 'test@example.com',
-            password: 'testpass'
+            password: 'testpass',
+            class: 1
         });
 
         expect(response.body).toHaveProperty("token");

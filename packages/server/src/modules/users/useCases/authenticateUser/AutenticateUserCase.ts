@@ -31,7 +31,8 @@ class AuthenticateUserCase {
         token: jwt.sign({ id: user._id }, auth.secret, {
           expiresIn: auth.expiresIn,
         }),
-        user: user.email
+        user: user.email,
+        class: user.class
       };
   };
 };

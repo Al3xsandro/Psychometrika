@@ -7,14 +7,16 @@ class CreateUserController {
     async handle(req: Request, res: Response) {
         const { 
             email,
-            password
+            password,
+            select_class
         }: IUser = req.body;
 
         const createUserService = new CreateUserCase();
 
         const user = await createUserService.execute({
             email,
-            password
+            password,
+            select_class
         });
         
         return res.json(user);

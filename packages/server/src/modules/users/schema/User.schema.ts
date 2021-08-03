@@ -1,13 +1,8 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-interface User {
-    email: string;
-    password: string;
-    admin: Boolean;
-    class: string;
-}
+import IUser from '../dtos/IUser.dto';
 
-type UserDocument = Document & User;
+type UserDocument = Document & IUser;
 
 const UserSchema = new Schema(
     {

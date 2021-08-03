@@ -18,6 +18,7 @@ describe('CreateUserCase', () => {
         const response = await User.create({
             email: 'test@example.com',
             password: bcrypt.hashSync('testpass', 8),
+            select_class: 1
         });
         
         const user = await User.findById(response._id);
