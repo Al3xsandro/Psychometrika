@@ -8,13 +8,6 @@ const ClassSchema = new Schema(
     {
         title: {
             type: String
-        },
-        class: {
-            type: Number
-        },
-        book: {
-            type: Schema.Types.ObjectId,
-            ref: 'Book'
         }
     },
     {
