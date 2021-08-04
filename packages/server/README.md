@@ -37,6 +37,14 @@
     $ yarn jest 
     ```
 
+# Documentação
+
+  - Após iniciar o projeto em sua maquina, acesse:
+  
+    ```
+      localhost:8000/docs
+    ```
+
 ## License
 
 [MIT licensed](LICENSE).
