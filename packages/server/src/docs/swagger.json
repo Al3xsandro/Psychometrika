@@ -1,3 +1,141 @@
 {
-    
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Psychometrika",
+        "description": "Sistema gerenciador de conteúdo de livros didáticos.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/",
+            "description": "API para testes"
+        }
+    ],
+    "paths": {
+        "/v1/users": {
+            "post": {
+                "summary": "Criar",
+                "description": "Essa rota é responsável criar um novo usuário",
+                "tags": ["user"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUser"
+                            }
+                        }
+                    }, 
+                    "examples": {
+                        "value": {
+                            "email": "mateusoliveira@psychometrika.com",
+                            "password": "hardpassword",
+                            "select_class": "610a7003997d991f828851b0"
+                        }
+                    }
+                }, 
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Login"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    }
+                }
+            }
+        },
+        "/v1/login": {
+            "post": {
+                "summary": "Logar usuário",
+                "description": "Essa rota é responsável por retornar dados do usuário",
+                "tags": ["user"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }, 
+                    "examples": {
+                        "value": {
+                            "email": "mateusoliveira@psychometrika.com",
+                            "password": "hardpassword"
+                        }
+                    }
+                }, 
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginData"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateUser": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }, 
+                    "password": {
+                        "type": "string"
+                    },
+                    "select_class": {
+                        "type": "string"
+                    }
+                }
+            }, 
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }, 
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LoginData": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "type": "string"
+                    },
+                    "class": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "securitySchemes": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
 }
