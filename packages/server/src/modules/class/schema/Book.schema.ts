@@ -12,10 +12,7 @@ const BookSchema = new Schema(
         class: {
             type: Schema.Types.ObjectId,
             ref: 'Class'
-        },
-        chapters: [{
-            type: String
-        }]
+        }
     },
     {
         timestamps: true

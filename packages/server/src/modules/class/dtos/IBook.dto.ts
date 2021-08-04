@@ -1,5 +1,4 @@
 export interface IBook {
     title: String;
-    class: Number;
-    chapters: String[];
+    class_id: String;
 };
