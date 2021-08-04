@@ -9,10 +9,6 @@ const ChapterSchema = new Schema(
         title: {
             type: String
         },
-        book: {
-            type: Schema.Types.ObjectId,
-            ref: 'Book'
-        },
         banner: {
             type: String
         },

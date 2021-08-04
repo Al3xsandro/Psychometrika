@@ -8,7 +8,6 @@ class CreateChapterController {
         const { 
             title,
             banner,
-            book,
             hide,
             content
         }:IChapter = req.body;
@@ -18,7 +17,6 @@ class CreateChapterController {
         const createChapter = await createChapterCase.execute({ 
             title,
             banner,
-            book,
             hide,
             content
         });

@@ -7,13 +7,11 @@ class CreateChapterCase {
     async execute({ 
         title,
         banner,
-        book,
         content,
         hide
      }: IChapter) {
         if( 
-            !title || !banner || 
-            !book || !content
+            !title || !banner || !content
         ){
             throw new AppError('Bad Request');
         };
@@ -27,7 +25,6 @@ class CreateChapterCase {
         const createChapter = await Chapter.create({ 
             title,
             banner,
-            book,
             content,
             hide
         });
