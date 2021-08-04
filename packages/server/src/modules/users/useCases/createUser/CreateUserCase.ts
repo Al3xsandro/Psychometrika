@@ -27,7 +27,7 @@ class CreateUserCase {
 
         const password_hash = await hash(password, 8);
 
-        const user = await User.create({ email, password: password_hash, class: select_class });
+        const user = await User.create({ email, password: password_hash, class: String(select_class) });
 
         if(!user){
             throw new AppError('An error was occurred', 500);

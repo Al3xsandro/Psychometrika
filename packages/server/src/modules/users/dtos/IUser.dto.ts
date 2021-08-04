@@ -4,5 +4,5 @@ export default interface IUser {
     password: string;
     admin?: boolean;
     class?: number;
-    select_class?: number;
+    select_class?: string;
 };
