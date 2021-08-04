@@ -86,6 +86,207 @@
                     }
                 }
             }
+        },
+        "/v1/books": {
+            "get": {
+                "summary": "Acessar livros",
+                "description": "Essa rota é responsável por retornar todos os livros",
+                "tags": ["books"],
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Books"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/v1/book/{id}": {
+            "get": {
+                "summary": "Acessar livro",
+                "description": "Essa rota é responsável por retornar um livro em especifico",
+                "tags": ["books"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "id do livro"
+                    }
+                ],
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Books"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/v1/chapter": {
+            "post": {
+                "summary": "Criar capítulo para livro",
+                "description": "Essa rota é responsável por criar um capítulo para um livro",
+                "tags": ["admin"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateChapter"
+                            }
+                        }
+                    }
+                }, 
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateChapter"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/book": {
+            "post": {
+                "summary": "Criar livro",
+                "description": "Essa rota é responsável por criar um novo livro",
+                "tags": ["admin"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateBook"
+                            }
+                        }
+                    }, 
+                    "examples": {
+                        "value": {
+                            "title": "Conjutos númericos",
+                            "class_id": "610a7003997d991f828851b0",
+                            "chapter": "610a7ee47e10ef34f2d7cf7f"
+                        }
+                    }
+                }, 
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "class": {
+                                            "type": "string"
+                                        },
+                                        "chapter": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/class": {
+            "post": {
+                "summary": "Criar classes",
+                "description": "Essa rota é responsável por criar uma classe de alfabetização para o usuário",
+                "tags": ["admin"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateClass"
+                            }
+                        }
+                    }, 
+                    "examples": {
+                        "value": {
+                            "title": "1 série"
+                        }
+                    }
+                }, 
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Badrequest"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -128,14 +329,87 @@
                         "type": "string"
                     }
                 }
+            },
+            "Books": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "class": {
+                        "type": "string"
+                    },
+                    "chapters": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "banner": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "type": "string"
+                            },
+                            "hide": {
+                                "type": "boolean"
+                            },
+                            "created_at": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "CreateClass": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateChapter": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "banner": {
+                        "type": "string"
+                    },
+                    "hide": {
+                        "type": "boolean"
+                    },
+                    "content": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateBook": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "class_id": {
+                        "type": "string"
+                    },
+                    "chapter": {
+                        "type": "string"
+                    }
+                }
             }
-        }
-    },
-    "securitySchemes": {
-        "bearerAuth": {
-            "type": "http",
-            "scheme": "bearer",
-            "bearerFormat": "JWT"
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
         }
     }
 }
