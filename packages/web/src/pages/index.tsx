@@ -25,32 +25,32 @@ export default function Home() {
         </div>
 
         <form className={styles.content_input} onSubmit={handleLogin}>
-            
-            <label className={styles.label}>Email</label>
-            
-            <input
-              className={styles.input}
-              type="email"
-              placeholder="Seu email institucional"
-              onChange={event => setEmail(event.target.value)}
-              required
-            />
+            <label>
+              <span className={styles.span}>Email</span>
 
-            <label className={styles.label}>Senha</label>
-            
-            <input
-              className={styles.input}
-              type="password"
-              placeholder="Minimo de 8 characteres"
-              onChange={event => setPassword(event.target.value)}
-              required
-            />
+              <input
+                className={styles.input}
+                type="email"
+                placeholder="Seu email institucional"
+                onChange={event => setEmail(event.target.value)}
+                required
+              />
+            </label>
 
-            <i className={styles.hideIcon}><BiHide /></i>
+            <label>
+              <span className={styles.span}>Senha</span>
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Minimo de 8 characteres"
+                onChange={event => setPassword(event.target.value)}
+                required
+              />
 
-            <br/>
+              <i className={styles.hideIcon}><BiHide /></i>
+            </label>
+
             <button className={styles.button} type="submit">Entrar</button>
-
         </form>
       </div>
     </div>
