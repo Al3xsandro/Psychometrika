@@ -21,7 +21,7 @@
 
 ## Instalação
 
-- Antes de prosseguir, crie arquivo `.env` e configure as credenciais do banco de dados com base no arquivo `.env.example`
+- Você pode utilizar o gerenciador de pacotes de sua preferencia!
 
     ```bash
     $ yarn
