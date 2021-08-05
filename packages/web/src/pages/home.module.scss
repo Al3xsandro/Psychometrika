@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 100vh;
+    width: 100%;
+
+    background-image: url('https://psychometrika.vercel.app/background.png');
+    background-repeat: repeat;
+
+    margin: 0 auto;
+    
+    .form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+        background: var(--white);
+        
+        padding: 3rem;
+
+        width: 27.063rem;
+        height: 26.25rem;
+
+        box-shadow: 10px 3px 20px rgba(58, 58, 1, 0.1);
+
+        border-bottom: 1rem;
+        border-radius: 1rem;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            margin-top: -0.2rem;
+            
+            .logo {
+                padding: 0.14rem;
+                width: 10rem;
+                height: 1.8rem;
+                opacity: 0.9;
+
+                margin: 0.3rem;
+            }
+
+            .subtitle {
+                font-family: Neue Machina, sans-serif;
+                font-size: 1rem;
+                font-weight: 100;
+
+                color: var(--subtitle);
+                margin: 0.3rem
+            }
+        }
+    
+        .content_input {
+            display: flex;
+            flex-direction: column;
+
+            position: relative;
+
+            .hideIcon {
+                position: absolute;
+                top: 8.8rem;
+                right: 0.7rem;
+
+                color: rgba(4, 4, 19, 0.638);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .label {  
+                font-family: Segoe UI, sans-serif;
+                opacity: 0.7;
+                margin: 0.3rem;
+            }
+            
+            margin-top: 1rem;
+            
+            .input {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0.9rem;
+                margin: 0.3rem;
+
+                outline: none;
+                background: transparent;
+                border-style: none;
+
+                border: 1px solid rgba(0, 0, 0, 0.25);
+                border-radius: 0.3rem;
+
+                height: 3.3rem;
+                width: 21rem;
+            }
+            
+            .button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+
+                background: var(--button);
+                border-radius: 0.3rem;
+
+                border-style: none;
+                color: var(--white);
+
+                margin: 0.3rem;
+                width: 21rem;
+
+                font-family: Roboto, sans-serif;
+                font-weight: 600;
+                font-size: 1rem;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    @media(max-width: 768px){
+        .form {
+            width: 22.1rem;
+
+            .content_input {
+                .input {
+                    width: 17rem;
+                }
+                .button {
+                    width: 17rem;
+                }
+            }
+        }
+    }
+};
