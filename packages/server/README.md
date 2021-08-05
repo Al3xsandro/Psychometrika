@@ -18,8 +18,7 @@
 
 
 ## Deploy
-- `URL`:
-    
+- `URL`
     <a href="https://psychometrika.herokuapp.com/docs/">Clique aqui!</a>
 
 
