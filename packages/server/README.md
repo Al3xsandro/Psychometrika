@@ -14,6 +14,13 @@
    - Jest
    - Express
    - Mongoose
+   - Swagger
+
+
+## Deploy
+- `URL`:
+    
+    <a href="https://psychometrika.herokuapp.com/docs/">Clique aqui!</a>
 
 
 ## Instalação
