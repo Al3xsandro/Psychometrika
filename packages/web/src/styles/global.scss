@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+};
+
+:root {
+    --white: #FFF;
+
+    --backgroud: #E5E5E5;
+};
+
+@media (max-width: 1080px){
+    html {
+        font-size: 93.75%;
+    };
+};
+
+@media (max-width: 768px){
+    html {
+        font-size: 87.5%;
+    };
+};
+
+body {
+    background: var(--backgroud);
+
+    height: 100vh;
+};
