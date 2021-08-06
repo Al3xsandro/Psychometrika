@@ -4,12 +4,16 @@ import '../styles/global.scss'
 import styles from '../styles/app.module.scss';
 
 import { AuthContextProvider } from '../contexts/AuthContext';
+import Header from '../components/header';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
+
+      <Header />
+      
       <div className={styles.content}>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </div>
     </AuthContextProvider>
   )

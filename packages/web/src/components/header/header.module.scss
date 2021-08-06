@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    height: 8.680rem;
+
+    background: var(--white);
+
+    .admin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 1rem;
+
+        .logo {
+            padding: 0.9rem;
+            width: 10rem;
+        }
+
+        .subtitle {
+            font-family: 'Neue Machina', sans-serif;
+            font-size: 1rem;
+            font-weight: 100;
+            
+            margin-right: 58rem;
+
+            color: var(--subtitle);
+        }
+
+        border-bottom: 1px solid var(--background);
+    }
+    
+    .section {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        
+        padding: 1rem;
+        margin-left: 0.7rem;
+
+        .title {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        border-bottom: 2px solid var(--background);
+    }
+
+    @media(max-width: 768px){
+        display: flex;
+
+        .admin {
+            display: flex;
+            justify-content: space-between;
+
+            .logo {
+                padding: 1rem;
+            }
+
+            .subtitle {
+                font-size: 0.8rem;
+                margin-right: 6rem;
+            }
+        }
+    }
+}

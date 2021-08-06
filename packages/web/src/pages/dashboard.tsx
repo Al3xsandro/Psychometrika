@@ -6,9 +6,6 @@ export default function Dashboard() {
             <Head>
                 <title>Psychometrika | home</title>
             </Head>
-            <div className="container">
-                <h1>Logado</h1>
-            </div>
         </>
     )
 };
