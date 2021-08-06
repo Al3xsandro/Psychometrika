@@ -7,6 +7,8 @@ import {
 import Router from 'next/router';
 
 import { api } from '../services/api';
+import Home from '../pages';
+import Dashboard from '../pages/dashboard';
 
 type signIn = {
     email: string;
@@ -15,6 +17,7 @@ type signIn = {
 
 interface AuthContextData {
     isAuthenticated: boolean;
+    isAdmin: boolean;
     signIn({ email, password }: signIn): Promise<void>;
 };
 
@@ -62,8 +65,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ signIn, isAuthenticated }}>
-            { children }
+        <AuthContext.Provider value={{ signIn, isAdmin, isAuthenticated }}>
+            { !isAuthenticated ? <Home /> : children }
         </AuthContext.Provider>
     )
 };
