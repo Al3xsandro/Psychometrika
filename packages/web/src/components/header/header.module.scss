@@ -26,6 +26,13 @@
             margin-right: 58rem;
 
             color: var(--subtitle);
+
+        }
+        
+        .admin_modal {
+            &:hover {
+                opacity: 0.8;
+            }
         }
 
         border-bottom: 1px solid var(--background);
