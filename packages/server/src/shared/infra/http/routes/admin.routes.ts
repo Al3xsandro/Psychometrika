@@ -15,6 +15,6 @@ const createChapterController = new CreateChapterController();
 
 routes.post('/class', auth, ensureAdmin, createClassController.handle);
 routes.post('/book', auth, ensureAdmin, createBookController.handle);
-routes.post('/chapter', ensureAdmin, auth, createChapterController.handle);
+routes.post('/chapter', auth,  ensureAdmin, createChapterController.handle);
 
 export default routes;
