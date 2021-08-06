@@ -4,12 +4,21 @@ import { BiHide } from 'react-icons/bi';
 
 import styles from './home.module.scss';
 
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
+
 export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleLogin() {
+  async function handleLogin() {
+    if(!email.trim() || !password){
+      return;
+    };
 
+    const { signIn } = useContext(AuthContext);
+
+    await signIn({ email, password });
   };
 
   return (
@@ -20,7 +29,7 @@ export default function Home() {
 
       <div className={styles.form}>
         <div className={styles.title}>
-          <img className={styles.logo} src="/logo.png" alt="Psychometrika" />
+          <img className={styles.logo} src="/logo.svg" alt="Psychometrika" />
           <p className={styles.subtitle}>Desafio Trainee</p>
         </div>
 
