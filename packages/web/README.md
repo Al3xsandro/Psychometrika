@@ -18,6 +18,12 @@
 - `URL`
     <a href="https://psychometrika.vercel.app/">Clique aqui!</a>
 
+## Users 
+- Demo: 
+     
+    - email: `demo@psychometrika.com`
+    - password: `12345678`
+
 
 ## Instalação
 
