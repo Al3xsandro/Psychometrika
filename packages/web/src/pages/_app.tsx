@@ -1,14 +1,16 @@
 import type { AppProps } from 'next/app'
 
 import '../styles/global.scss'
-import styles from '../styles/app.module.scss'; 
-import Home from './index';
+import styles from '../styles/app.module.scss';
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className={styles.content}>
-      <Home />
-    </div>
+    <AuthContextProvider>
+      <div className={styles.content}>
+        <Component {...pageProps}/>
+      </div>
+    </AuthContextProvider>
   )
 }
 
