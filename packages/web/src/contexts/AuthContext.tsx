@@ -8,7 +8,6 @@ import Router from 'next/router';
 
 import { api } from '../services/api';
 import Home from '../pages';
-import Dashboard from '../pages/dashboard';
 
 type signIn = {
     email: string;
@@ -18,6 +17,7 @@ type signIn = {
 interface AuthContextData {
     isAuthenticated: boolean;
     isAdmin: boolean;
+    isLoading: boolean;
     signIn({ email, password }: signIn): Promise<void>;
 };
 
@@ -30,6 +30,7 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
     const [isAuthenticated, setAuthenticated] = useState(false);
     const [isAdmin, setIsAmin] = useState(false);
+    const [isLoading, setLoading] = useState(false);
 
     async function signIn({
         email,
@@ -41,6 +42,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
                 'Content-Type': 'application/json'
             }
         }
+
+        setLoading(true);
         
         await api.post('/v1/login', {
             email,
@@ -56,16 +59,19 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
             setAuthenticated(true);
 
+            setLoading(false);
+
             Router.push('/dashboard');
         }).catch(err => {
             console.log(err);
             alert(err);
+            setLoading(false)
             Router.push('/');
         });
     };
 
     return (
-        <AuthContext.Provider value={{ signIn, isAdmin, isAuthenticated }}>
+        <AuthContext.Provider value={{ signIn, isAdmin, isLoading, isAuthenticated }}>
             { !isAuthenticated ? <Home /> : children }
         </AuthContext.Provider>
     )

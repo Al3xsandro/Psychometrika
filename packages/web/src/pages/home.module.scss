@@ -11,6 +11,12 @@
     background-repeat: repeat;
 
     margin: 0 auto;
+
+    .loading {
+        display: flex;
+        position: relative;
+        top: 12rem;
+    }
     
     .form {
         display: flex;

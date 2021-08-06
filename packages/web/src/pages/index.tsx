@@ -6,7 +6,8 @@ import { BiHide } from 'react-icons/bi';
 import styles from './home.module.scss';
 
 import { useAuth } from '../hooks/auth';
-import Router from 'next/router';
+
+import SyncLoader from "react-spinners/SyncLoader";
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export default function Home() {
 
   const { 
     signIn,
+    isLoading
   } = useAuth();
 
   async function handleLogin(event: FormEvent) {
@@ -26,11 +28,19 @@ export default function Home() {
     await signIn({ email, password });
   };
 
-  return (
+  return (    
     <div className={styles.container}>
       <Head>
         <title>Psychometrika | login</title>
       </Head>
+
+      {
+        !isLoading ? <></> : (
+          <div className={styles.loading}>
+            <SyncLoader color="#00718A" size={20}/>
+          </div>
+        )
+      }
 
       <div className={styles.form}>
         <div className={styles.title}>
