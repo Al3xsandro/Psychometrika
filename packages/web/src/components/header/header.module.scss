@@ -13,23 +13,32 @@
 
         padding: 1rem;
 
-        .logo {
-            padding: 0.9rem;
-            width: 10rem;
-        }
-
-        .subtitle {
-            font-family: 'Neue Machina', sans-serif;
-            font-size: 1rem;
-            font-weight: 300;
+        .title {
+            display: flex;
+            justify-content: space-between;
             
-            margin-right: 58rem;
+            .logo {
+                padding: 0.9rem;
+                width: 10rem;
+            }
 
-            color: var(--subtitle);
-
+            .subtitle {
+                font-family: 'Neue Machina', sans-serif;
+                font-size: 1rem;
+                font-weight: 300;
+    
+                color: var(--subtitle);
+    
+                position: relative;
+                right: 0.1rem;
+                top: 1.2rem;
+            }    
         }
-        
+
         .admin_modal {
+            display: flex;
+            align-items: center;
+
             &:hover {
                 opacity: 0.8;
             }
@@ -68,7 +77,6 @@
 
             .subtitle {
                 font-size: 0.8rem;
-                margin-right: 6rem;
             }
         }
     }
