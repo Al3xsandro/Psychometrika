@@ -20,9 +20,15 @@
 
 ## Users 
 - Demo: 
-     
-    - email: `demo@psychometrika.com`
-    - password: `12345678`
+    Estudantes: 1 série
+
+        - email: `demo@psychometrika.com`
+        - password: `12345678`
+    
+    Estudantes: 2 série
+
+        - email: `student@psychometrika.com`
+        - password: `12345678`
 
 
 ## Instalação
