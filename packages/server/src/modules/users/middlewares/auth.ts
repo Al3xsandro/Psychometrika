@@ -24,9 +24,14 @@ export default function auth(
 
     const [, token] = authToken.split(' ');
 
-    const { id } = verify(token, process.env.SECRET_JWT || '') as IPayload;
-
-    req.user_id = id;
-
-    return next();
-}
+    try {
+        const { id } = verify(token, process.env.SECRET_JWT || '') as IPayload;
+        
+        req.user_id = id;
+        
+        return next();
+    } catch (err) {
+        console.error(err);
+        throw new AppError('token expired', 401);
+    };
+};
