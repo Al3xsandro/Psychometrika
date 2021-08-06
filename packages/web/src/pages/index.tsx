@@ -1,22 +1,27 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import Head from 'next/head'
+
 import { BiHide } from 'react-icons/bi';
 
 import styles from './home.module.scss';
 
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/auth';
+import Router from 'next/router';
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleLogin() {
+  const { 
+    signIn,
+  } = useAuth();
+
+  async function handleLogin(event: FormEvent) {
+    event.preventDefault();
+
     if(!email.trim() || !password){
       return;
     };
-
-    const { signIn } = useContext(AuthContext);
 
     await signIn({ email, password });
   };
@@ -65,3 +70,9 @@ export default function Home() {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
+}
