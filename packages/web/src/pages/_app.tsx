@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
       <div className={styles.content}>
-        <Component {...pageProps}/>
+        <Component {...pageProps} />
       </div>
     </AuthContextProvider>
   )
