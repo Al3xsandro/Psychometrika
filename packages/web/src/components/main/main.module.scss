@@ -68,15 +68,24 @@
             display: flex;
             justify-content: center;
 
+            .section_right {
+                display: flex;
+                justify-content: center;
+            }
+
             .section_class_right {
                 display: flex;
-                width: 21.7rem;
+                margin: 0 auto;
+
+                width: 18rem;
 
                 padding: 1rem;
             }
 
             .content {
                 width: 18rem;
+
+                margin: 0 auto;
             }
         }
     }
