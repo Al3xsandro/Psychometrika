@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 
-    height: 8.680rem;
+    height: 9.2rem;
 
     background: var(--white);
 
@@ -44,7 +44,7 @@
             }
         }
 
-        border-bottom: 1px solid var(--background);
+        border-bottom: 1px solid #e1e1e1;
     }
     
     .section {
@@ -61,7 +61,7 @@
             font-weight: 300;
         }
 
-        border-bottom: 2px solid var(--background);
+        border-bottom: 1.2px solid #cacaca;
     }
 
     @media(max-width: 768px){
