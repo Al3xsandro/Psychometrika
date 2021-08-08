@@ -132,7 +132,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "description": "id do livro"
+                        "description": "id da classe do usuário"
                     }
                 ],
                 "security": [{
