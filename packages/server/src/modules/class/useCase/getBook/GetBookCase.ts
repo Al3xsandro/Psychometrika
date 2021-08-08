@@ -8,10 +8,10 @@ class GetBookCase {
             throw new AppError('Invalid id')
         }
 
-        const book = await Book.findById(id).populate('chapters').exec();
+        const book = await Book.findOne({ class: id }).populate('chapters').exec();
     
         if(!book){
-            throw new AppError('An error has occurred', 500);
+            throw new AppError('Invalid id', 400);
         };
 
         return book;
