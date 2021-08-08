@@ -402,6 +402,9 @@
                     "_id": {
                         "type": "string"
                     },
+                    "title": {
+                        "type": "string"
+                    },
                     "class_id": {
                         "type": "string"
                     },
