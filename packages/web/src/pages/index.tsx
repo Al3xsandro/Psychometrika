@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import { BiHide } from 'react-icons/bi';
 
-import styles from './home.module.scss';
+import styles from '../styles/pages/home.module.scss';
 
 import { useAuth } from '../hooks/auth';
 
