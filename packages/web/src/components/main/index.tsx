@@ -50,7 +50,11 @@ export default function Main({ books }: BooksProps) {
 export const getStaticProps: GetStaticProps = async () => {
     const { data } = await api.get('/v1/books');
 
-    const books = data.map(data => {})
+    const books = data.map((books: Books) => {
+        return {
+            title: books.title
+        };
+    });
     
     return {
         props: {
