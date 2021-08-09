@@ -11,7 +11,7 @@ type BooksProps = {
     books: Books[];
 };
 
-export default function Main({ books }: BooksProps) {
+export function Main({ books }: BooksProps) {
     return (
         <div className={styles.container}>
             <div className={styles.section_right}>
