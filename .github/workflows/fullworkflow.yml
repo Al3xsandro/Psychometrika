@@ -1,0 +1,17 @@
+name: Complete workflow
+on: ['push', 'pull_request']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/server
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
+    - name: Run tests
+      env:
+          MONGO_URL: ${{secrets.MONGO_URL}}
+          SECRET_JWT: ${{secrets.SECRET_JWT}}
+      run: yarn test
