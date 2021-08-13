@@ -7,7 +7,9 @@ import {
 import Router from 'next/router';
 
 import { api } from '../services/api';
-import Home from '../pages';
+
+import { setCookie, parseCookies } from 'nookies';
+import { useEffect } from 'react';
 
 type signIn = {
     email: string;
@@ -15,11 +17,16 @@ type signIn = {
 }
 
 interface AuthContextData {
-    isAuthenticated: boolean;
     isAdmin: boolean;
+    isAuthenticated: boolean;
     isLoading: boolean;
     signIn({ email, password }: signIn): Promise<void>;
 };
+
+type User = {
+    id: string;
+    email: string;
+}
 
 type AuthContextProviderProps = {
     children: ReactNode;
@@ -28,9 +35,11 @@ type AuthContextProviderProps = {
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
-    const [isAuthenticated, setAuthenticated] = useState(false);
     const [isAdmin, setIsAmin] = useState(false);
     const [isLoading, setLoading] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+
+    const isAuthenticated = !!user;
 
     async function signIn({
         email,
@@ -51,15 +60,17 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         }, options)
         
         .then(response => {
-            const data = response.data.token;
+            const data = response.data;
 
-            localStorage.setItem('token', data);
+            setCookie(undefined, 'psychometrika.token', data.token, {
+                maxAge: 60 * 60 * 24 // 1 day
+            });
 
-            api.defaults.headers[`Authorization`] = `Bearer ${data}`;
-
-            setAuthenticated(true);
-
+            setUser({ id: data.id, email: data.email });
+            
             setLoading(false);
+
+            api.defaults.headers['Authorization'] = `Bearer ${data.token}`;
 
             Router.push('/dashboard');
         }).catch(err => {
@@ -71,8 +82,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ signIn, isAdmin, isLoading, isAuthenticated }}>
-            { !isAuthenticated ? <Home /> : children }
+        <AuthContext.Provider value={{ signIn, isAdmin, isAuthenticated, isLoading }}>
+            { children }
         </AuthContext.Provider>
     )
 };

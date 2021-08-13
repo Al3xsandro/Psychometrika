@@ -1,5 +1,3 @@
-import axios from 'axios';
+import { getAPIClient } from "./axios";
 
-export const api = axios.create({
-    baseURL: 'https://psychometrika.herokuapp.com/'
-});
+export const api = getAPIClient();

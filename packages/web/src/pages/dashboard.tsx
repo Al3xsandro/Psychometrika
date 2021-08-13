@@ -1,3 +1,8 @@
+import { GetServerSideProps } from 'next';
+
+import { parseCookies } from 'nookies';
+import { getAPIClient } from '../services/axios';
+
 import styles from '../styles/pages/dashboard.module.scss';
 
 import Head from "next/head";
@@ -10,7 +15,7 @@ type BooksProps = {
     book: Books[];
 }
 
-export default function Dashboard({ book }: BooksProps) {
+export default function Dashboard() {
     return (
         <>
             <Head>
@@ -20,7 +25,7 @@ export default function Dashboard({ book }: BooksProps) {
             <div className={styles.container}>
                 <div className={styles.section_right}>
                     <div className={styles.section_class_right}>
-                        <h2 className={styles.title}>1 Série</h2>
+                        <h2 className={styles.title}></h2>
 
                         <div className={styles.refresh_right}><img src="/refresh.svg" alt="logo" /></div>
                     </div>
@@ -48,4 +53,24 @@ export default function Dashboard({ book }: BooksProps) {
             </div>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    const { ['psychometrika.token']: token } = parseCookies(ctx);
+    const api = getAPIClient(ctx);
+
+    if(!token) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        };
+    };
+
+    const books = await api.get('/v1/books');
+
+    return {
+        props: {}
+    };
 };
