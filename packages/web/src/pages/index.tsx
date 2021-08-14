@@ -12,6 +12,7 @@ import SyncLoader from "react-spinners/SyncLoader";
 export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPass, setShowPass] = useState(false);
 
   const { 
     signIn,
@@ -27,6 +28,10 @@ export default function Home() {
 
     await signIn({ email, password });
   };
+
+  function handleShow() {
+    return !showPass ? setShowPass(true) : setShowPass(false);
+  }
 
   return (    
     <div className={styles.container}>
@@ -65,13 +70,13 @@ export default function Home() {
               <span className={styles.span}>Senha</span>
               <input
                 className={styles.input}
-                type="password"
+                type={ !showPass ? "password" : "text" }
                 placeholder="Minimo de 8 characteres"
                 onChange={event => setPassword(event.target.value)}
                 required
               />
 
-              <i className={styles.hideIcon}><BiHide /></i>
+              <i className={styles.hideIcon} onClick={handleShow}><BiHide /></i>
             </label>
 
             <button className={styles.button} type="submit">Entrar</button>
