@@ -9,6 +9,7 @@ import Head from "next/head";
 import { Grade } from '../components/grade';
 
 type Books = {
+    id: string;
     title: string;
 };
 
@@ -40,7 +41,8 @@ export default function Dashboard({ books }: BooksProps) {
 
                         {
                             allbooks.map((book) => (
-                                <Grade 
+                                <Grade
+                                    key={book.id}
                                     title={book.title}
                                 />
                             ))
@@ -62,7 +64,8 @@ export default function Dashboard({ books }: BooksProps) {
 
                         {
                             allbooks.map((book) => (
-                                <Grade 
+                                <Grade
+                                    key={book.id}
                                     title={book.title}
                                 />
                             ))
@@ -91,6 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const books = data.map(book => {
         return {
+            id: book.id,
             title: book.title
         }
     })
