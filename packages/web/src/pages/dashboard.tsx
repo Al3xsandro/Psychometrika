@@ -6,16 +6,19 @@ import { getAPIClient } from '../services/axios';
 import styles from '../styles/pages/dashboard.module.scss';
 
 import Head from "next/head";
+import { Grade } from '../components/grade';
 
 type Books = {
     title: string;
 };
 
 type BooksProps = {
-    book: Books[];
+    books: Books[];
 }
 
-export default function Dashboard() {
+export default function Dashboard({ books }: BooksProps) {
+    const allbooks = [...books];
+
     return (
         <>
             <Head>
@@ -25,7 +28,7 @@ export default function Dashboard() {
             <div className={styles.container}>
                 <div className={styles.section_right}>
                     <div className={styles.section_class_right}>
-                        <h2 className={styles.title}></h2>
+                        <h2 className={styles.title}>1 série</h2>
 
                         <div className={styles.refresh_right}><img src="/refresh.svg" alt="logo" /></div>
                     </div>
@@ -34,6 +37,14 @@ export default function Dashboard() {
                         <div className={styles.title}>
                             <h4>Frente A <i style={{ padding: '0.3rem'}}><img src="/edit-icon.svg" alt="icon"/></i></h4>
                         </div>
+
+                        {
+                            allbooks.map((book) => (
+                                <Grade 
+                                    title={book.title}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
                 
@@ -48,6 +59,14 @@ export default function Dashboard() {
                         <div className={styles.title}>
                             <h4>Frente A <i style={{ padding: '0.3rem'}}><img src="/edit-icon.svg" alt="icon"/></i></h4>
                         </div>
+
+                        {
+                            allbooks.map((book) => (
+                                <Grade 
+                                    title={book.title}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
             </div>
@@ -68,9 +87,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         };
     };
 
-    const books = await api.get('/v1/books');
+    const { data } = await api.get('/v1/books');
+
+    const books = data.map(book => {
+        return {
+            title: book.title
+        }
+    })
 
     return {
-        props: {}
+        props: {
+            books
+        }
     };
 };
