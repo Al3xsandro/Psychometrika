@@ -1,0 +1,50 @@
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: #f1f1f1;
+    
+    height: 3rem;
+    width: 20rem;
+
+    margin: 1rem auto;
+
+    border-radius: 0.4rem;
+
+    .position {
+        border: solid 0.9px #8C939D;
+        padding: 0.1rem 0.4rem;
+
+        position: relative;
+        right: 0.3rem;
+
+        border-radius: 0.9rem;
+
+        .position_title {
+            font-family: 'Segoe UI', sans-serif;
+            color: #8C939D;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+    }
+
+    .title {
+        font-family: 'Segoe UI', sans-serif;
+        color: #5e5e5e;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .icon {
+        margin: 0.5rem;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    @media(max-width: 968px) {
+        width: 16rem;
+    }
+}
