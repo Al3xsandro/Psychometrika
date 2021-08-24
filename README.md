@@ -1,4 +1,8 @@
-# Psychometrika
+<h2 align="center">Psychometrika :rocket:</h2>
+
+## Deploy
+- `URL`
+    <a href="https://psychometrika.vercel.app/">Clique aqui!</a>
 
 <h2>💻 Projeto</h2>
 
