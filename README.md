@@ -3,6 +3,14 @@
 ## Deploy
 - `URL`
     <a href="https://psychometrika.vercel.app/">Clique aqui!</a>
+    
+## Users 
+- Demo: 
+
+    Estudantes: 1 série
+
+    - email: `demo@psychometrika.com`
+    - password: `12345678`
 
 <h2>💻 Projeto</h2>
 
